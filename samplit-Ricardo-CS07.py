@@ -1,7 +1,7 @@
 import random
 import sys
 
-# Sample lines from a file
+# Sample about 1% of lines (target branch version)
 def main():
     if len(sys.argv) != 2:
         print("Usage: python samplit-Ricardo-CS07.py <filename>", file=sys.stderr)
