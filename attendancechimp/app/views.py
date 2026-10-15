@@ -78,3 +78,21 @@ def sum_view(request):
     except (TypeError, ValueError):
         return JsonResponse({"error": "n1 and n2 must be numbers"}, status=400)
     return JsonResponse({"sum": n1 + n2})
+
+
+import json
+
+
+def sum_view(request):
+    def to_number(s):
+        try:
+            return int(s)
+        except ValueError:
+            return float(s)
+
+    try:
+        n1 = to_number(request.GET.get("n1"))
+        n2 = to_number(request.GET.get("n2"))
+    except (TypeError, ValueError):
+        return HttpResponse("<p>n1 and n2 must be numbers</p>", status=400)
+    return HttpResponse("<p>" + json.dumps({"sum": n1 + n2}) + "</p>")
