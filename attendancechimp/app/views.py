@@ -53,3 +53,28 @@ def index(request):
 
 
 
+
+
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from django.http import HttpResponse, JsonResponse
+
+
+def time_view(request):
+    now = datetime.now(ZoneInfo("America/Chicago"))
+    return HttpResponse(now.strftime("%H:%M"), content_type="text/plain")
+
+
+def sum_view(request):
+    def to_number(s):
+        try:
+            return int(s)
+        except ValueError:
+            return float(s)
+
+    try:
+        n1 = to_number(request.GET.get("n1"))
+        n2 = to_number(request.GET.get("n2"))
+    except (TypeError, ValueError):
+        return JsonResponse({"error": "n1 and n2 must be numbers"}, status=400)
+    return JsonResponse({"sum": n1 + n2})
