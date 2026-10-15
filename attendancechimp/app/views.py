@@ -96,3 +96,25 @@ def sum_view(request):
     except (TypeError, ValueError):
         return HttpResponse("<p>n1 and n2 must be numbers</p>", status=400)
     return HttpResponse("<p>" + json.dumps({"sum": n1 + n2}) + "</p>")
+
+
+from decimal import Decimal
+
+
+def sum_view(request):
+    try:
+        total = Decimal(request.GET.get("n1")) + Decimal(request.GET.get("n2"))
+    except (TypeError, ArithmeticError):
+        return HttpResponse("<p>n1 and n2 must be numbers</p>", status=400)
+    return HttpResponse("<p>" + str(total) + "</p>")
+
+
+from decimal import Decimal
+
+
+def sum_view(request):
+    try:
+        total = Decimal(request.GET.get("n1")) + Decimal(request.GET.get("n2"))
+    except (TypeError, ArithmeticError):
+        return HttpResponse("<p>n1 and n2 must be numbers</p>", status=400)
+    return HttpResponse("<p>" + str(total) + "</p>")
