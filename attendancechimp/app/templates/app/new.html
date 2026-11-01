@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - AttendanceChimp</title>
+</head>
+<body>
+
+    <h1>Sign Up for AttendanceChimp</h1>
+
+    <form method="POST" action="/app/createUser">
+
+        <p>
+            Username:
+            <input type="text" name="user_name" required>
+        </p>
+
+        <p>
+            Email:
+            <input type="email" name="email" required>
+        </p>
+
+        <p>
+            Password:
+            <input type="password" name="password" required>
+        </p>
+
+        <p>Account Type:</p>
+
+        <input type="radio" name="is_student" value="student" required>
+        Student
+
+        <br>
+
+        <input type="radio" name="is_student" value="instructor">
+        Instructor
+
+        <br><br>
+
+        <button type="submit">Create Account</button>
+
+    </form>
+
+</body>
+</html>

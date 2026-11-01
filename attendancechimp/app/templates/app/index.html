@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <title>AttendanceChimp</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
-        .bio { max-width: 600px; margin: 0 auto; }
-        .username { font-weight: bold; font-size: 1.2em; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+
+        .bio {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
-<div class="bio">
-    <h1>AttendanceChimp</h1>
-    <p>Electronic class attendance tracking application.</p>
-    <hr>
+    <div class="bio">
+        <h1>AttendanceChimp</h1>
+        <p>Electronic class attendance tracking application.</p>
+        <hr>
 
-</div>
+        <p>
+            Logged-in User:
+            {% if current_user.is_authenticated %}
+                <span class="username">{{ current_user.username }}</span>
+            {% else %}
+                <span class="username">Not logged in</span>
+            {% endif %}
+        </p>
+
+        <p>Current Time: {{ current_time }}</p>
+    </div>
 </body>
 </html>
