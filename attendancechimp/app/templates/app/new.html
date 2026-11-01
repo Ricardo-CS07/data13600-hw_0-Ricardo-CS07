@@ -5,11 +5,9 @@
     <title>Sign Up - AttendanceChimp</title>
 </head>
 <body>
-
     <h1>Sign Up for AttendanceChimp</h1>
 
     <form method="POST" action="/app/createUser">
-
         <p>
             Username:
             <input type="text" name="user_name" required>
@@ -27,19 +25,15 @@
 
         <p>Account Type:</p>
 
-        <input type="radio" name="is_student" value="student" required>
+        <input type="radio" name="is_student" value="1" required>
         Student
-
         <br>
 
-        <input type="radio" name="is_student" value="instructor">
+        <input type="radio" name="is_student" value="0">
         Instructor
-
         <br><br>
 
-        <button type="submit">Create Account</button>
-
+        <button type="submit">Sign Up</button>
     </form>
-
 </body>
 </html>

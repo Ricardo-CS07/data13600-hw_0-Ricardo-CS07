@@ -65,7 +65,6 @@ def new(request):
 @csrf_exempt
 def createUser(request):
     """Create a new student or instructor account."""
-
     if request.method != "POST":
         return HttpResponse(status=405)
 
@@ -77,7 +76,7 @@ def createUser(request):
     if not user_name or not email or not password:
         return HttpResponse("Missing required information", status=400)
 
-    if role not in ["student", "instructor"]:
+    if role not in ["1", "0"]:
         return HttpResponse("Invalid account type", status=400)
 
     if User.objects.filter(email__iexact=email).exists():
@@ -92,7 +91,7 @@ def createUser(request):
         password=password
     )
 
-    if role == "student":
+    if role == "1":
         StudentProfile.objects.create(
             user=user,
             student_id=uuid.uuid4().hex[:20]
@@ -101,10 +100,7 @@ def createUser(request):
         InstructorProfile.objects.create(user=user)
 
     login(request, user)
-
     return HttpResponse("User created successfully", status=200)
-
-
 # ---------------------------------------------------------------------------
 # HW5  — courses, lectures, QR uploads, dump
 # ---------------------------------------------------------------------------
